@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes revealFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.diagonal-box {
+  position: relative;
+  padding: 8rem 0;
+  background: linear-gradient(45deg, #000 0%, #1a1a1a 100%);
+  clip-path: polygon(0 0, 100% 5%, 100% 95%, 0 100%);
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.reveal-on-scroll.visible {
+  animation: revealFromLeft 1s forwards;
+}
+
+.float-animation {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 2px #fff;
+  color: transparent;
+}
+
+.bike-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  perspective: 1000px;
+}
+
+@layer utilities {
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .perspective {
+    perspective: 1000px;
+  }
+}
